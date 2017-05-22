@@ -1,0 +1,4 @@
+.tern-port
+node_modules
+test.config.json
+config.json

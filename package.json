@@ -1,0 +1,28 @@
+{
+  "name": "loopshare_companies",
+  "version": "1.0.0",
+  "description": "Routines to manipulate companies tables",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/**/test*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@activimetrics.com/a/jmarca/loopshare_server/loopshare_companies"
+  },
+  "keywords": [
+    "Loopshare",
+    "companies"
+  ],
+  "author": "James E. Marca",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "tap": "^10.3.2"
+  },
+  "dependencies": {
+    "config_okay": "^1.0.0",
+    "pg": "^6.2.2",
+    "pg-native": "^1.10.1"
+  }
+}

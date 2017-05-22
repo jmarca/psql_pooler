@@ -1,0 +1,17 @@
+# Sample .travis.yml for R projects from https://github.com/craigcitro/r-travis
+
+language: node_js
+node_js:
+  - "node"
+  - "7"
+  - "6"
+
+
+env:
+  - global:
+    - WARNINGS_ARE_ERRORS=1
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
