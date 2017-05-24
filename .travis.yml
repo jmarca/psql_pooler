@@ -4,12 +4,6 @@ language: node_js
 node_js:
   - "node"
   - "7"
-  - "6"
-
-
-env:
-  - global:
-    - WARNINGS_ARE_ERRORS=1
 
 notifications:
   email:
