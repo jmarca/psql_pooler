@@ -4,7 +4,8 @@
   "description": "Routines to manipulate companies tables",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/**/test*.js"
+    "test": "tap test/**/*.js --cov",
+    "posttest": "tap --coverage-report=lcov"
   },
   "repository": {
     "type": "git",
