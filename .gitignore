@@ -2,3 +2,4 @@
 node_modules
 test.config.json
 config.json
+.nyc_output
