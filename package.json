@@ -1,5 +1,5 @@
 {
-  "name": "loopshare_companies",
+  "name": "psql_pooler",
   "version": "1.0.0",
   "description": "Routines to manipulate companies tables",
   "main": "index.js",
@@ -11,7 +11,9 @@
     "type": "git",
     "url": "git+ssh://git@activimetrics.com/a/jmarca/loopshare_server/loopshare_companies"
   },
-  "engines" : { "node" : ">=7.0" },
+  "engines": {
+    "node": ">=7.0"
+  },
   "keywords": [
     "postgresql",
     "connection pooling"
@@ -25,5 +27,9 @@
   "dependencies": {
     "config_okay": "^1.0.0",
     "pg": "^6.2.2"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }
