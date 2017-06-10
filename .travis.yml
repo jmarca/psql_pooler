@@ -19,7 +19,7 @@ services:
   - couchdb
 
 before_script:
-  - psql -c 'CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';' -U postgres
+  - psql -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
   - echo "localhost:5432:*:testu:my secret password" > .pgpass && chmod 0600 .pgpass
   - psql -c 'create database atestdb;' -U testu
   - echo "{\"postgresql\":{\"host\":\"127.0.0.1\",\"port\":5432,\"username\":\"testu\",\"db\":\"atestdb\"}}" > test.config.json && chmod 0600 test.config.json
