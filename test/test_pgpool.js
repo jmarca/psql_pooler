@@ -16,7 +16,7 @@ tap.plan(5)
 
 config_okay(config_file)
     .then(async ( config ) => {
-        //console.log('got config')
+        console.log('got config',config)
         // config has config parameters for pg_pool
 
         await tap.test('expect a failure to get pool',async function(t) {
