@@ -16,7 +16,7 @@ notifications:
     on_failure: change
 
 services:
-  - couchdb
+  - postgresql
 
 before_script:
   - psql -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
