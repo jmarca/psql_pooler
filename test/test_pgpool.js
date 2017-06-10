@@ -16,7 +16,7 @@ tap.plan(5)
 
 config_okay(config_file)
     .then(async ( config ) => {
-        //console.log('got config')
+        // console.log('got config',config)
         // config has config parameters for pg_pool
 
         await tap.test('expect a failure to get pool',async function(t) {
@@ -24,7 +24,7 @@ config_okay(config_file)
             t.ok(pg_pool.get_pool,'have get_pool fn')
             const empty_pool = await  pg_pool.get_pool({})
             // empty config results in broken pool
-            //console.log('mpty pool is ',empty_pool)
+            // console.log('empty pool is ',empty_pool)
             let client
             try {
                 client = await empty_pool.connect()
@@ -71,19 +71,19 @@ config_okay(config_file)
                     let client
                     try {
                         client = await broken_pool.connect()
-                        console.log('pool.connect did not fail as expected',client)
+                        // console.log('pool.connect did not fail as expected',client)
                         t.fail ('should have crashed')
                         client.release()
                     }
                     catch(e){
-                        console.log('pool.connect failed as expected')
+                        // console.log('pool.connect failed as expected')
                         t.match(e,/does not exist/,'user name fail')
                         t.pass('bad connection parameters')
                     }
                     return null
                 })
                 .catch( e => {
-                    console.log('inside expected catch statement',e)
+                    // console.log('inside expected catch statement',e)
 
                     t.pass('failed to init without config file')
                     t.end()
@@ -132,7 +132,7 @@ config_okay(config_file)
         return null
     })
     .catch( (err) =>{
-        console.log('external catch statement triggered')
+        // console.log('external catch statement triggered')
         console.log(err)
         throw new Error(err)
 
