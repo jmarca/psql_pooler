@@ -3,8 +3,8 @@
 language: node_js
 node_js:
   - "node"
-  - "7"
-  - "6"
+#  - "7"
+#  - "6"
 
 addons:
   code_climate:
@@ -21,7 +21,7 @@ services:
 before_script:
   - psql -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
   - export PGPASSWORD="my secret password"
-  - psql -c 'create database atestdb;' -U testu
+  - psql -c 'create database atestdb;' -U testu -d postgres
   - echo "{\"postgresql\":{\"host\":\"127.0.0.1\",\"port\":5432,\"username\":\"testu\",\"db\":\"atestdb\"}}" > test.config.json && chmod 0600 test.config.json
 
 after_success:
