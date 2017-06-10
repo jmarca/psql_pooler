@@ -1,5 +1,7 @@
 # psql_pooler
 
+[![Build Status](https://www.travis-ci.org/jmarca/psql_pooler.svg?branch=master)](https://www.travis-ci.org/jmarca/psql_pooler)
+
 Simple bit of code extracted from another repo to create a
 long-running pool
 using [node-postgres](https://github.com/brianc/node-postgres).  I
