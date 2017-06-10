@@ -1,6 +1,9 @@
 # psql_pooler
 
 [![Build Status](https://www.travis-ci.org/jmarca/psql_pooler.svg?branch=master)](https://www.travis-ci.org/jmarca/psql_pooler)
+[![Code Climate](https://codeclimate.com/github/jmarca/psql_pooler/badges/gpa.svg)](https://codeclimate.com/github/jmarca/psql_pooler)
+[![Test Coverage](https://codeclimate.com/github/jmarca/psql_pooler/badges/coverage.svg)](https://codeclimate.com/github/jmarca/psql_pooler/coverage)
+
 
 Simple bit of code extracted from another repo to create a
 long-running pool

@@ -6,6 +6,10 @@ node_js:
   - "7"
   - "6"
 
+addons:
+  code_climate:
+    repo_token: 34f8e378fa9c2c7058787512aae6a41c0300d1137670810adb4fb10af6fe64b8
+
 notifications:
   email:
     on_success: change
