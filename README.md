@@ -1,5 +1,7 @@
 # psql_pooler
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jmarca/psql_pooler.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://www.travis-ci.org/jmarca/psql_pooler.svg?branch=master)](https://www.travis-ci.org/jmarca/psql_pooler)
 
 Simple bit of code extracted from another repo to create a
