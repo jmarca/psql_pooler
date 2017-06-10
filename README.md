@@ -1,7 +1,6 @@
 # psql_pooler
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/jmarca/psql_pooler.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://www.travis-ci.org/jmarca/psql_pooler.svg?branch=master)](https://www.travis-ci.org/jmarca/psql_pooler)
 [![Code Climate](https://codeclimate.com/github/jmarca/psql_pooler/badges/gpa.svg)](https://codeclimate.com/github/jmarca/psql_pooler)
 [![Test Coverage](https://codeclimate.com/github/jmarca/psql_pooler/badges/coverage.svg)](https://codeclimate.com/github/jmarca/psql_pooler/coverage)
