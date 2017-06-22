@@ -12,7 +12,7 @@ const rootdir = path.normalize(__dirname)
 const config_file = rootdir+'/../test.config.json'
 const config_okay = require('config_okay')
 
-tap.plan(5)
+tap.plan(6)
 
 config_okay(config_file)
     .then(async ( config ) => {
@@ -33,7 +33,7 @@ config_okay(config_file)
             }
             catch(e){
                 // console.log('pool.connect failed as expected',e)
-                t.match(e,/does not exist/,'cannot log in with bad values')
+                t.match(e,/does not exist|password authentication failed/,'cannot log in with bad values')
                 t.pass('empty (default) connection parameters')
             }
             finally{
@@ -77,7 +77,7 @@ config_okay(config_file)
                     }
                     catch(e){
                         // console.log('pool.connect failed as expected')
-                        t.match(e,/does not exist/,'user name fail')
+                        t.match(e,/does not exist|password authentication failed/,'user name fail')
                         t.pass('bad connection parameters')
                     }
                     return null
@@ -121,6 +121,25 @@ config_okay(config_file)
                 t.end()
                 return null
             } catch (e){
+                t.fail('failed to get pool with valid init')
+                t.end()
+                return null
+            }
+        })
+
+        await tap.test('expect success with alternate port',async function(t) {
+            //t.plan(1)
+            try {
+                const _config = Object.assign({},config)
+                _config.postgresql.port = 5434
+                const pool = await pg_pool.get_pool(_config)
+                const client = await pool.connect()
+                t.pass('should not crashed')
+                await client.release()
+                t.end()
+                return null
+            } catch (e){
+                console.log(e)
                 t.fail('failed to get pool with valid init')
                 t.end()
                 return null

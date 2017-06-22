@@ -3,7 +3,7 @@
 language: node_js
 node_js:
   - "node"
-  - "7"
+#   - "7"
 #   - "6" # async requires node 7+
 
 addons:
@@ -22,7 +22,16 @@ before_script:
   - psql -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
   - export PGPASSWORD="my secret password"
   - psql -c 'create database atestdb;' -U testu -d postgres
+  - sudo mkdir /second
+  - sudo mkdir -p /var/log/logdb2
+  - sudo chown -R postgres /second
+  - sudo chown -R postgres /var/log/logdb2
+  - sudo -u postgres /usr/lib/postgresql/9.1/bin/initdb -D /second
+  - sudo -u postgres /usr/lib/postgresql/9.1/bin/pg_ctl -w -D /second -o "-p 5434" -l /var/log/logdb2/log start
+  - psql -p 5434 -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
+  - psql -p 5434 -c 'create database atestdb;' -U testu -d postgres
   - echo "{\"postgresql\":{\"host\":\"127.0.0.1\",\"port\":5432,\"username\":\"testu\",\"db\":\"atestdb\"}}" > test.config.json && chmod 0600 test.config.json
+
 
 after_success:
   - npm install codeclimate-test-reporter
