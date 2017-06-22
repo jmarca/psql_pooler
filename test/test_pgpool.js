@@ -12,7 +12,7 @@ const rootdir = path.normalize(__dirname)
 const config_file = rootdir+'/../test.config.json'
 const config_okay = require('config_okay')
 
-tap.plan(5)
+tap.plan(6)
 
 config_okay(config_file)
     .then(async ( config ) => {
@@ -115,6 +115,24 @@ config_okay(config_file)
             //t.plan(1)
             try {
                 const pool = await pg_pool.get_pool(config)
+                const client = await pool.connect()
+                t.pass('should not crashed')
+                await client.release()
+                t.end()
+                return null
+            } catch (e){
+                t.fail('failed to get pool with valid init')
+                t.end()
+                return null
+            }
+        })
+
+        await tap.test('expect success with alternate port',async function(t) {
+            //t.plan(1)
+            try {
+                const _config = Object.assign({},config)
+                _config.postgresql.port = 5434
+                const pool = await pg_pool.get_pool(_config)
                 const client = await pool.connect()
                 t.pass('should not crashed')
                 await client.release()
