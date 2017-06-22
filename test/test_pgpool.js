@@ -139,6 +139,7 @@ config_okay(config_file)
                 t.end()
                 return null
             } catch (e){
+                console.log(e)
                 t.fail('failed to get pool with valid init')
                 t.end()
                 return null
