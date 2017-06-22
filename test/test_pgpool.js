@@ -33,7 +33,7 @@ config_okay(config_file)
             }
             catch(e){
                 // console.log('pool.connect failed as expected',e)
-                t.match(e,/does not exist/,'cannot log in with bad values')
+                t.match(e,/does not exist|password authentication failed/,'cannot log in with bad values')
                 t.pass('empty (default) connection parameters')
             }
             finally{
@@ -77,7 +77,7 @@ config_okay(config_file)
                     }
                     catch(e){
                         // console.log('pool.connect failed as expected')
-                        t.match(e,/does not exist/,'user name fail')
+                        t.match(e,/does not exist|password authentication failed/,'user name fail')
                         t.pass('bad connection parameters')
                     }
                     return null
