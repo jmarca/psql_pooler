@@ -25,7 +25,7 @@ before_script:
   - sudo mkdir /second
   - sudo chown -R postgres /second
   - sudo -u postgres /usr/lib/postgresql/9.1/bin/initdb -D /second
-  - sudo -u postgres /usr/lib/postgresql/9.1/bin/pg_ctl -D /second -o "-p 5434" -l /var/log/logdb2 start
+  - sudo -u postgres /usr/lib/postgresql/9.1/bin/pg_ctl -w -D /second -o "-p 5434" -l /var/log/logdb2 start
   - psql -p 5434 -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
   - psql -p 5434 -c 'create database atestdb;' -U testu -d postgres
   - echo "{\"postgresql\":{\"host\":\"127.0.0.1\",\"port\":5432,\"username\":\"testu\",\"db\":\"atestdb\"}}" > test.config.json && chmod 0600 test.config.json
