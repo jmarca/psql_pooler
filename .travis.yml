@@ -3,7 +3,7 @@
 language: node_js
 node_js:
   - "node"
-#   - "7"
+  - "7"
 #   - "6" # async requires node 7+
 
 addons:
