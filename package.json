@@ -22,7 +22,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "eslint": "^4.0.0",
-    "tap": "^11.0.0"
+    "tap": "^12.0.0"
   },
   "dependencies": {
     "config_okay": "^1.0.0",
