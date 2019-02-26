@@ -24,7 +24,7 @@ config_okay(config_file)
             t.ok(pg_pool.get_pool,'have get_pool fn')
             const empty_pool = await  pg_pool.get_pool({})
             // empty config results in broken pool
-            console.log('empty pool is ',empty_pool)
+            // console.log('empty pool is ',empty_pool)
             let client
             try {
                 client = await empty_pool.connect()
