@@ -4,3 +4,4 @@ test.config.json
 config.json
 .nyc_output
 coverage
+*~
