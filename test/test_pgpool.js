@@ -19,7 +19,7 @@ config_okay(config_file)
         // console.log('got config',config)
         // config has config parameters for pg_pool
 
-        await tap.test('expect a failure to get pool',async function(t) {
+        await tap.test('expect a failure to get pool 1',async function(t) {
             //t.plan(2)
             t.ok(pg_pool.get_pool,'have get_pool fn')
             const empty_pool = await  pg_pool.get_pool({})
@@ -42,14 +42,14 @@ config_okay(config_file)
 
         })
 
-        await tap.test('expect a failure to get pool',async function(t) {
+        await tap.test('expect a failure to get pool 2',async function(t) {
             //t.plan(2)
             t.ok(pg_pool.get_pool,'have get_pool fn')
             try {
                 const empty_pool = await  pg_pool.get_pool()
+                console.log('mpty pool is ',empty_pool)
                 t.fail ('should have crashed')
                 // empty config results in broken pool
-                //console.log('mpty pool is ',empty_pool)
             }
             catch(e){
                 // console.log('pool.connect failed as expected',e)
