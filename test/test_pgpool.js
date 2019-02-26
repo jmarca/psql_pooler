@@ -33,7 +33,7 @@ config_okay(config_file)
             }
             catch(e){
                 // console.log('pool.connect failed as expected',e)
-                t.match(e,/does not exist|password authentication failed/,'cannot log in with bad values')
+                t.match(e,/does not exist|password authentication failed|ECONNREFUSED/,'cannot log in with bad values')
                 t.pass('empty (default) connection parameters')
             }
             finally{
@@ -65,7 +65,9 @@ config_okay(config_file)
 
         await tap.test('expect a failure',async function(t) {
             //t.plan(2)
-            return pg_pool.get_pool({'postgresql':{'username':'slub',
+            return pg_pool.get_pool({'postgresql':{'host':config.postgresql.host,
+                                                   'port':config.postgresql.port,
+                                                   'username':'slub',
                                                    'password':'grobblefruit'}})
                 .then( async (broken_pool) => {
                     let client

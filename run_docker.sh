@@ -80,13 +80,28 @@ postgres(){
 
 postgres_test_setup(){
     relies_on postgres
-
+    sleep 1
     docker exec postgres psql -h postgres -U postgres -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';"
+    docker exec postgres psql -c 'create database atestdb;' -U testu -d postgres
+    docker exec postgres mkdir /var/log/logdb2
+    docker exec postgres mkdir /second
+    docker exec postgres chown -R postgres /second
+    docker exec postgres chown -R postgres /var/log/logdb2
+    docker exec postgres su-exec postgres initdb -D /second
+    sleep 1
+    docker exec postgres sh -c "echo 'host all all all trust' >> /second/pg_hba.conf"
+    docker exec postgres su-exec postgres pg_ctl -w -D /second -o "-p 5434" -l /var/log/logdb2/log start
+    docker exec postgres psql -p 5434 -U postgres -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';"
+    docker exec postgres psql -p 5434 -c 'create database atestdb;' -U testu -d postgres
+
+    echo "{\"postgresql\":{\"host\":\"postgres\",\"port\":5432,\"username\":\"testu\",\"db\":\"atestdb\"}}" > test.config.json && chmod 0600 test.config.json
+
+
 }
 
 
 
 psql_pooler_test(){
     del_stopped "psql_pooler"
-    docker run --rm -it -v ${PWD}:/usr/src/dev  --name psql_pooler jmarca/psql_pooler sh
+    docker run --rm -it -v ${PWD}:/usr/src/dev  -w /usr/src/dev --network=postgres_nw --name psql_pooler jmarca/psql_pooler sh
 }
