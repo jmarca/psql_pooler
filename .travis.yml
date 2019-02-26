@@ -21,7 +21,7 @@ services:
 before_script:
   - psql -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
   - export PGPASSWORD="my secret password"
-  - export PGUSER="testu"
+  - export PGUSER="baduser"
   - psql -c 'create database atestdb;' -U testu -d postgres
   - sudo mkdir /second
   - sudo mkdir -p /var/log/logdb2
