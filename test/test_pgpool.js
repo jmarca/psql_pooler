@@ -28,6 +28,7 @@ config_okay(config_file)
             let client
             try {
                 client = await empty_pool.connect()
+                console.log('client is ',client)
                 t.fail ('should have crashed connecting with empty config')
                 if(client) client.release()
             }
