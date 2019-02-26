@@ -24,11 +24,11 @@ config_okay(config_file)
             t.ok(pg_pool.get_pool,'have get_pool fn')
             const empty_pool = await  pg_pool.get_pool({})
             // empty config results in broken pool
-            // console.log('empty pool is ',empty_pool)
+            console.log('empty pool is ',empty_pool)
             let client
             try {
                 client = await empty_pool.connect()
-                t.fail ('should have crashed')
+                t.fail ('should have crashed connecting with empty config')
                 if(client) client.release()
             }
             catch(e){
@@ -47,7 +47,7 @@ config_okay(config_file)
             t.ok(pg_pool.get_pool,'have get_pool fn')
             try {
                 const empty_pool = await  pg_pool.get_pool()
-                console.log('mpty pool is ',empty_pool)
+                // console.log('mpty pool is ',empty_pool)
                 t.fail ('should have crashed')
                 // empty config results in broken pool
             }
