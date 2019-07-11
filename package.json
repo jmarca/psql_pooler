@@ -1,7 +1,7 @@
 {
   "name": "psql_pooler",
   "version": "1.0.0",
-  "description": "Simple bit of code extracted from another repo to create a long-running pool",
+  "description": "Simple bit of code extracted from another repo to create a long-running pg pool",
   "main": "index.js",
   "scripts": {
     "test": "tap test/**/test*.js --cov",
@@ -22,7 +22,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "eslint": "^6.0.0",
-    "tap": "^14.4.0"
+    "tap": "^14.4.1"
   },
   "dependencies": {
     "config_okay": "^1.0.1",
