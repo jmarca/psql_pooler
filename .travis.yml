@@ -6,9 +6,9 @@ node_js:
   - "8”
 #   - "6" # async requires node 7+
 
-addons:
-  code_climate:
-    repo_token: 34f8e378fa9c2c7058787512aae6a41c0300d1137670810adb4fb10af6fe64b8
+env:
+  global:
+    - CC_TEST_REPORTER_ID=34f8e378fa9c2c7058787512aae6a41c0300d1137670810adb4fb10af6fe64b8
 
 notifications:
   email:
@@ -19,6 +19,9 @@ services:
   - postgresql
 
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - psql -c "CREATE USER testu WITH LOGIN CREATEDB PASSWORD 'my secret password';" -U postgres
   - export PGPASSWORD="my secret password"
   - export PGUSER="baduser"
@@ -34,6 +37,5 @@ before_script:
   - echo "{\"postgresql\":{\"host\":\"127.0.0.1\",\"port\":5432,\"username\":\"testu\",\"db\":\"atestdb\"}}" > test.config.json && chmod 0600 test.config.json
 
 
-after_success:
-  - npm install codeclimate-test-reporter
-  - ./node_modules/.bin/tap --coverage-report=text-lcov | ./node_modules/.bin/codeclimate-test-reporter
+after_script:
+  - ./node_modules/.bin/tap --coverage-report=lcov &&  ./cc-test-reporter after-build  -t lcov --exit-code $TRAVIS_TEST_RESULT
