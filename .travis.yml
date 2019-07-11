@@ -3,8 +3,7 @@
 language: node_js
 node_js:
   - "node"
-  - "8”
-#   - "6" # async requires node 7+
+  - "8"
 
 env:
   global:
