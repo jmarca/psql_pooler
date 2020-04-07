@@ -21,12 +21,12 @@
   "author": "James E. Marca",
   "license": "GPL-3.0",
   "devDependencies": {
-    "eslint": "^6.0.0",
-    "tap": "^14.10.6"
+    "eslint": "^6.8.0",
+    "tap": "^14.10.7"
   },
   "dependencies": {
     "config_okay": "^1.0.1",
-    "pg": "^7.11.0"
+    "pg": "^7.18.2"
   },
   "directories": {
     "lib": "lib",
