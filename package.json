@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "config_okay": "^1.0.1",
-    "pg": "^8.0.3"
+    "pg": "^8.1.0"
   },
   "directories": {
     "lib": "lib",
